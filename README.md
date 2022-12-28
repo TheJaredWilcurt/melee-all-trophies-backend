@@ -48,20 +48,20 @@ id  | sessionId | index
 * `POST /sessions`
   * Will create a new session record, along with new related secret and socket records
   * Returns an object with the Session ID, Date, and a Secret
-    * { id: 50, secret: '0752', lastUpdated: '2022-12-28T01:38:01.289Z' }
+    * `{ id: 50, secret: '0752', lastUpdated: '2022-12-28T01:38:01.289Z' }`
     * Frontend will store this returned object in local storage
 * `PATCH /sessions/:id`
   * Must include the Session ID, the Secret, and a TXXX or BXXX value with boolean
     * `{ id: 50, secret: '0753', b004: true }`
   * All requests will validate the secret matches the session first and reject otherwise (401?)
-    * Should there be a "guess" limit, or timeout?
+    * Should there be a rate limit/timeout?
   * All successful patches will also update the `lastUpdated` field with the current time stamp
   * All successful patches will also increment the related socket `index`
 * `DELETE /sessions/:id`
   * Must include the Session ID and the Secret
     * `{ id: 50, secret: '0753' }`
   * All requests will validate the secret matches the session first and reject otherwise (401?)
-    * Should there be a "guess" limit, or timeout?
+    * Should there be a rate limit/timeout?
   * Does not actually delete the record, instead sets a "deletedAt" date field to have a date value
 * `GET /sockets/:id`
   * Should be a websocket
@@ -110,7 +110,7 @@ Route           | GET  | PUT  | POST | PATCH | DELETE
 * `sessionId`
   * The related ID in the Session Table
 * `secret`
-  * A string of 4 numbers, '1234', '0000', '4862'
+  * A string of 4 numbers, `'1234'`, `'0000'`, `'4862'`
   * Initially the only the session creator has this secret, but they can share it with those they want to collaborate with
 
 
@@ -134,8 +134,8 @@ These would apply to all list routes, which in this case is just `/sessions`.
 * `deletedAt=true` - Will return all records, including records that have a deleted time stamp (not returned by default)
 * Maybe filtering? With the fields we have I think sorting and pagination is probably good enough
   * `fieldName="exact match"`
-  * `fieldName=~"containing match"
-  * `lastUpdate=">2022-12-31T06:00:00.000Z" (filter to records updated after 12/31)
+  * `fieldName=~"containing match"`
+  * `lastUpdate=">2022-12-31T06:00:00.000Z"` (filter to records updated after 12/31)
 
 
 ## Example Session Object
