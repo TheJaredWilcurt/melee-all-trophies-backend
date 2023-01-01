@@ -44,7 +44,7 @@ id  | sessionId | index
   * Returns array of all sessions
 * `GET /sessions/:id`
   * Publically available
-  * return session object
+  * return session object ([seen below](https://github.com/TheJaredWilcurt/melee-all-trophies-backend#example-session-object))
 * `POST /sessions`
   * Will create a new session record, along with new related secret and socket records
   * Returns an object with the Session ID, Date, and a Secret
