@@ -112,7 +112,7 @@ Route           | GET  | PUT  | POST | PATCH | DELETE
   * The related ID in the Session Table
 * `secret`
   * A string of 4 numbers, `'1234'`, `'0000'`, `'4862'`
-  * Initially the only the session creator has this secret, but they can share it with those they want to collaborate with
+  * Initially only the session creator has this secret, but they can share it with those they want to collaborate with
 
 
 ### Socket Table Fields
